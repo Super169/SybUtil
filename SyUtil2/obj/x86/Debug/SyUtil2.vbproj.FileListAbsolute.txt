@@ -1,0 +1,11 @@
+C:\my.source\SybUtil\SyUtil2\bin\Debug\SyUtil2.exe
+C:\my.source\SybUtil\SyUtil2\bin\Debug\SyUtil2.pdb
+C:\my.source\SybUtil\SyUtil2\bin\Debug\SyUtil2.xml
+C:\my.source\SybUtil\SyUtil2\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\my.source\SybUtil\SyUtil2\obj\x86\Debug\SyUtil2.frmTester.resources
+C:\my.source\SybUtil\SyUtil2\obj\x86\Debug\SyUtil2.Resources.resources
+C:\my.source\SybUtil\SyUtil2\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\my.source\SybUtil\SyUtil2\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\my.source\SybUtil\SyUtil2\obj\x86\Debug\SyUtil2.exe
+C:\my.source\SybUtil\SyUtil2\obj\x86\Debug\SyUtil2.xml
+C:\my.source\SybUtil\SyUtil2\obj\x86\Debug\SyUtil2.pdb

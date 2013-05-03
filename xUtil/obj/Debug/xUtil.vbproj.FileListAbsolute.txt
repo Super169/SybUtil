@@ -1,0 +1,11 @@
+C:\my.source\SybUtil\xUtil\bin\xUtil.dll
+C:\my.source\SybUtil\xUtil\bin\xUtil.pdb
+C:\my.source\SybUtil\xUtil\bin\xUtil.xml
+C:\my.source\SybUtil\xUtil\obj\Debug\xUtil.xDataWindow.resources
+C:\my.source\SybUtil\xUtil\obj\Debug\xUtil.xDataWindowBoolColumn.resources
+C:\my.source\SybUtil\xUtil\obj\Debug\xUtil.xDataWindowTableStyle.resources
+C:\my.source\SybUtil\xUtil\obj\Debug\xUtil.xDataWindowTextColumn.resources
+C:\my.source\SybUtil\xUtil\obj\Debug\xUtil.dll
+C:\my.source\SybUtil\xUtil\obj\Debug\xUtil.xml
+C:\my.source\SybUtil\xUtil\obj\Debug\xUtil.pdb
+C:\my.source\SybUtil\xUtil\obj\Debug\xUtil.vbproj.GenerateResource.Cache
