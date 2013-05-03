@@ -1,6 +1,5 @@
 #ignore thumbnails created by windows
 Thumbs.db
 SybUtil/obj/
-SybUtil2/obj/
 xUtil/obj/
 *.cache
