@@ -12,13 +12,14 @@ Public Class oServer
 
     Shared _Connected As Boolean = False
     Shared _ConnString As String = ""
-    Shared _ConnType As ConnectionType = ConnectionType.OLEDB
+    Shared _ConnType As ConnectionType = ConnectionType.NetPorvider
     Shared _ConnASE As AseConnection
     Shared _ConnOLEDB As OleDbConnection
     Shared _ServerName As String
     Shared _Database As String
     Shared _UserName As String
-    
+    Shared _CharSet As String = "cp850"
+
     Shared ReadOnly Property Database() As String
         Get
             Return _Database
@@ -37,7 +38,7 @@ Public Class oServer
         End Get
     End Property
 
-    Shared Function Connect(ByVal sServerName As String, ByVal oConnType As ConnectionType, ByVal sHost As String, ByVal sPort As String, ByVal sUserName As String, ByVal sPassword As String, ByVal sDatabase As String) As Boolean
+    Shared Function Connect(ByVal sServerName As String, ByVal oConnType As ConnectionType, ByVal sHost As String, ByVal sPort As String, ByVal sUserName As String, ByVal sPassword As String, ByVal sDatabase As String, ByVal sCharSet As String) As Boolean
 
         Dim sConnString As String = ""
         If _Connected Then
@@ -67,7 +68,7 @@ Public Class oServer
                                   "UID='" & sUserName & "';" & _
                                   "PWD='" & sPassword & "';" & _
                                   "Database='" & sDatabase & "';" & _
-                                  "CharSet='utf8'"
+                                  "CharSet='" & sCharSet & "'"
 
                     _ConnASE = New AseConnection(sConnString)
 

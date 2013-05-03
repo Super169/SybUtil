@@ -1,6 +1,7 @@
+Option Explicit On
+
 Imports Microsoft.Win32
-
-
+Imports System.Security.Cryptography
 
 Public Class frmLogin
     Inherits System.Windows.Forms.Form
@@ -41,15 +42,17 @@ Public Class frmLogin
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtUserName As System.Windows.Forms.TextBox
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
-    Friend WithEvents rbOLEDB As System.Windows.Forms.RadioButton
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents btnConnect As System.Windows.Forms.Button
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents cmbServer As System.Windows.Forms.ComboBox
     Friend WithEvents rbNet As System.Windows.Forms.RadioButton
-    Friend WithEvents cbxSaveProfile As System.Windows.Forms.CheckBox
+    Friend WithEvents cbxSavePassword As System.Windows.Forms.CheckBox
     Friend WithEvents txtDatabase As System.Windows.Forms.TextBox
     Friend WithEvents lblDatabase As System.Windows.Forms.Label
+    Friend WithEvents cboCharSet As System.Windows.Forms.ComboBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents rbOLEDB As System.Windows.Forms.RadioButton
     Friend WithEvents btnReadINI As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
@@ -62,15 +65,17 @@ Public Class frmLogin
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtUserName = New System.Windows.Forms.TextBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.rbOLEDB = New System.Windows.Forms.RadioButton()
         Me.rbNet = New System.Windows.Forms.RadioButton()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnConnect = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.cbxSaveProfile = New System.Windows.Forms.CheckBox()
+        Me.cbxSavePassword = New System.Windows.Forms.CheckBox()
         Me.txtDatabase = New System.Windows.Forms.TextBox()
         Me.lblDatabase = New System.Windows.Forms.Label()
         Me.btnReadINI = New System.Windows.Forms.Button()
+        Me.cboCharSet = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.rbOLEDB = New System.Windows.Forms.RadioButton()
         Me.SuspendLayout()
         '
         'cmbServer
@@ -156,21 +161,11 @@ Public Class frmLogin
         Me.txtPassword.Size = New System.Drawing.Size(310, 22)
         Me.txtPassword.TabIndex = 9
         '
-        'rbOLEDB
-        '
-        Me.rbOLEDB.Enabled = False
-        Me.rbOLEDB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbOLEDB.Location = New System.Drawing.Point(128, 166)
-        Me.rbOLEDB.Name = "rbOLEDB"
-        Me.rbOLEDB.Size = New System.Drawing.Size(80, 18)
-        Me.rbOLEDB.TabIndex = 10
-        Me.rbOLEDB.Text = "OLE DB"
-        '
         'rbNet
         '
         Me.rbNet.Checked = True
         Me.rbNet.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbNet.Location = New System.Drawing.Point(334, 166)
+        Me.rbNet.Location = New System.Drawing.Point(128, 166)
         Me.rbNet.Name = "rbNet"
         Me.rbNet.Size = New System.Drawing.Size(104, 18)
         Me.rbNet.TabIndex = 11
@@ -205,17 +200,15 @@ Public Class frmLogin
         Me.btnClose.TabIndex = 14
         Me.btnClose.Text = "Close"
         '
-        'cbxSaveProfile
+        'cbxSavePassword
         '
-        Me.cbxSaveProfile.Checked = True
-        Me.cbxSaveProfile.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbxSaveProfile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbxSaveProfile.ForeColor = System.Drawing.Color.Navy
-        Me.cbxSaveProfile.Location = New System.Drawing.Point(15, 200)
-        Me.cbxSaveProfile.Name = "cbxSaveProfile"
-        Me.cbxSaveProfile.Size = New System.Drawing.Size(104, 23)
-        Me.cbxSaveProfile.TabIndex = 12
-        Me.cbxSaveProfile.Text = "Save Profile"
+        Me.cbxSavePassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbxSavePassword.ForeColor = System.Drawing.Color.Navy
+        Me.cbxSavePassword.Location = New System.Drawing.Point(15, 200)
+        Me.cbxSavePassword.Name = "cbxSavePassword"
+        Me.cbxSavePassword.Size = New System.Drawing.Size(135, 23)
+        Me.cbxSavePassword.TabIndex = 12
+        Me.cbxSavePassword.Text = "Save Password"
         '
         'txtDatabase
         '
@@ -244,15 +237,48 @@ Public Class frmLogin
         Me.btnReadINI.TabIndex = 17
         Me.btnReadINI.Text = "SQL.INI"
         '
+        'cboCharSet
+        '
+        Me.cboCharSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboCharSet.FormattingEnabled = True
+        Me.cboCharSet.Items.AddRange(New Object() {"cp850", "utf8"})
+        Me.cboCharSet.Location = New System.Drawing.Point(358, 163)
+        Me.cboCharSet.Name = "cboCharSet"
+        Me.cboCharSet.Size = New System.Drawing.Size(80, 21)
+        Me.cboCharSet.TabIndex = 18
+        '
+        'Label5
+        '
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Navy
+        Me.Label5.Location = New System.Drawing.Point(273, 164)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(79, 18)
+        Me.Label5.TabIndex = 19
+        Me.Label5.Text = "CharSet:"
+        '
+        'rbOLEDB
+        '
+        Me.rbOLEDB.Enabled = False
+        Me.rbOLEDB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbOLEDB.Location = New System.Drawing.Point(12, -1)
+        Me.rbOLEDB.Name = "rbOLEDB"
+        Me.rbOLEDB.Size = New System.Drawing.Size(80, 18)
+        Me.rbOLEDB.TabIndex = 10
+        Me.rbOLEDB.Text = "OLE DB"
+        Me.rbOLEDB.Visible = False
+        '
         'frmLogin
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(445, 243)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.cboCharSet)
         Me.Controls.Add(Me.btnReadINI)
         Me.Controls.Add(Me.lblDatabase)
         Me.Controls.Add(Me.txtDatabase)
-        Me.Controls.Add(Me.cbxSaveProfile)
+        Me.Controls.Add(Me.cbxSavePassword)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnConnect)
         Me.Controls.Add(Me.Label4)
@@ -306,6 +332,13 @@ Public Class frmLogin
         txtPort.Text = oApplication.GetKey(sSubKey, "Port")
         txtDatabase.Text = oApplication.GetKey(sSubKey, "Database")
         txtUserName.Text = oApplication.GetKey(sSubKey, "User Name")
+        Dim encryptPwd As String = oApplication.GetKey(sSubKey, "Password")
+        If (encryptPwd > "") Then
+            txtPassword.Text = AESCrypter.AES_Decrypt(encryptPwd)
+            cbxSavePassword.Checked = True
+        Else
+            cbxSavePassword.Checked = False
+        End If
         If oApplication.GetKey(sSubKey, "Connection Type") = "OLE DB" Then
             rbOLEDB.Checked = True
             rbNet.Checked = False
@@ -313,6 +346,9 @@ Public Class frmLogin
             rbOLEDB.Checked = False
             rbNet.Checked = True
         End If
+        cboCharSet.Text = oApplication.GetKey(sSubKey, "CharSet")
+        If (cboCharSet.Text = "") Then cboCharSet.Text = "cp850"
+
     End Sub
 
     Private Sub SaveProfile(ByVal sSubKey As String)
@@ -321,11 +357,18 @@ Public Class frmLogin
         oApplication.SetKey(sSubKey, "Port", txtPort.Text)
         oApplication.SetKey(sSubKey, "Database", txtDatabase.Text)
         oApplication.SetKey(sSubKey, "User Name", txtUserName.Text)
+        If cbxSavePassword.Checked Then
+            Dim encryptPwd As String = AESCrypter.AES_Encrypt(txtPassword.Text)
+            oApplication.SetKey(sSubKey, "Password", encryptPwd)
+        Else
+            oApplication.SetKey(sSubKey, "Password", "")
+        End If
         If rbOLEDB.Checked Then
             oApplication.SetKey(sSubKey, "Connection Type", "OLE DB")
         Else
             oApplication.SetKey(sSubKey, "Connection Type", ".Net Provider")
         End If
+        oApplication.SetKey(sSubKey, "CharSet", cboCharSet.Text)
     End Sub
 
     Private Sub SaveProfile(ByVal sSubKey As String, ByVal sServerName As String, ByVal sHost As String, ByVal sPort As String)
@@ -350,11 +393,11 @@ Public Class frmLogin
             connType = oServer.ConnectionType.NetPorvider
         End If
         Try
-            If oServer.Connect(cmbServer.Text, connType, txtHost.Text, txtPort.Text, txtUserName.Text, txtPassword.Text, txtDatabase.Text) Then
-                If cbxSaveProfile.Checked Then
-                    Me.SaveProfile("Connections\\" & cmbServer.Text)
-                    Me.SaveProfile("Default")
-                End If
+            If oServer.Connect(cmbServer.Text, connType, txtHost.Text, txtPort.Text, txtUserName.Text, txtPassword.Text, txtDatabase.Text, cboCharSet.Text) Then
+                'If cbxSavePassword.Checked Then
+                Me.SaveProfile("Connections\\" & cmbServer.Text)
+                Me.SaveProfile("Default")
+                'End If
                 Me.Close()
                 Return False
             Else

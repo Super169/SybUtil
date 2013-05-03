@@ -95,9 +95,8 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\DLL\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="Sybase.Data.AseClient, Version=1.155.1016.0, Culture=neutral, PublicKeyToken=26e0f1529304f4a7">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\x86\Sybase.Data.AseClient.dll</HintPath>
+    <Reference Include="Sybase.AdoNet4.AseClient">
+      <HintPath>..\DLL\Sybase.AdoNet4.AseClient.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -133,6 +132,7 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AESCrypter.vb" />
     <Compile Include="AssemblyInfo.vb">
       <SubType>Code</SubType>
     </Compile>
