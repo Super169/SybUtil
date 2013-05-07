@@ -66,6 +66,7 @@ Public Class frmSQLScriptGenerator
     Friend WithEvents tpView As System.Windows.Forms.TabPage
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents fcTxtScript As FastColoredTextBoxNS.FastColoredTextBox
+    Friend WithEvents btnSaveScripts As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim XDataWindowSettings1 As xUtil.xDataWindowSettings = New xUtil.xDataWindowSettings()
@@ -112,6 +113,7 @@ Public Class frmSQLScriptGenerator
         Me.txtSearchKey = New System.Windows.Forms.TextBox()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.fcTxtScript = New FastColoredTextBoxNS.FastColoredTextBox()
+        Me.btnSaveScripts = New System.Windows.Forms.Button()
         Me.tcSybase.SuspendLayout()
         Me.tpALL.SuspendLayout()
         CType(Me.xdwAll, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -681,10 +683,20 @@ Public Class frmSQLScriptGenerator
         Me.fcTxtScript.TabIndex = 10
         Me.fcTxtScript.Zoom = 100
         '
+        'btnSaveScripts
+        '
+        Me.btnSaveScripts.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSaveScripts.Location = New System.Drawing.Point(368, 28)
+        Me.btnSaveScripts.Name = "btnSaveScripts"
+        Me.btnSaveScripts.Size = New System.Drawing.Size(80, 24)
+        Me.btnSaveScripts.TabIndex = 11
+        Me.btnSaveScripts.Text = "Save"
+        '
         'frmSQLScriptGenerator
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(972, 616)
+        Me.Controls.Add(Me.btnSaveScripts)
         Me.Controls.Add(Me.fcTxtScript)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.txtSearchKey)
@@ -1356,4 +1368,72 @@ Public Class frmSQLScriptGenerator
     End Sub
 
 
+    Private Sub btnSaveScripts_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSaveScripts.Click
+        Dim sfd As New SaveFileDialog
+        Dim sw As System.IO.StreamWriter
+        Dim sFileName As String
+        Try
+            Dim sObjType, sObjName As String
+            Dim iSysStat, iSysStat2 As Integer
+            Dim bObjValid As Boolean = False
+            Dim oSybase As clsSybaseObjectInfo
+            Dim xdw As xUtil.xDataWindow = Nothing
+            sfd.InitialDirectory = txtFilePath.Text
+            sfd.FileName = _ScriptObject
+            sfd.Filter = "SQL Script (*.SQL)|*.SQL|All files (*.*)|*.*"
+            If (sfd.ShowDialog() = DialogResult.OK) Then
+                sFileName = sfd.FileName
+                sw = New System.IO.StreamWriter(sFileName)
+
+                Select Case tcSybase.SelectedTab.Name
+                    Case tpUserTable.Name
+                        xdw = xdwUserTable
+                    Case tpProcedure.Name
+                        xdw = xdwStoredProcedure
+                    Case tpView.Name
+                        xdw = xdwView
+                    Case tpTrigger.Name
+                        xdw = xdwTrigger
+                    Case tpALL.Name
+                        xdw = xdwAll
+                    Case Else
+
+                End Select
+
+                If xdw Is Nothing Then Return
+
+                If (xdw.RowsSelected > 0) Then
+                    Dim idx As Integer
+                    For idx = 0 To xdw.RowCount - 1
+                        If xdw.IsSelected(idx) Then
+                            sObjType = ""
+                            sObjName = ""
+                            iSysStat = 0
+                            iSysStat2 = 0
+                            If GetObjectInfo(xdw, idx, sObjType, sObjName, iSysStat, iSysStat2) Then
+                                oSybase = New clsSybaseObjectInfo(sObjType, sObjName, iSysStat, iSysStat2)
+                                sw.Write(GenScript(oSybase))
+                            End If
+                        End If
+                    Next
+
+                Else
+                    sObjType = ""
+                    sObjName = ""
+                    iSysStat = 0
+                    iSysStat2 = 0
+                    If GetObjectInfo(xdw, xdw.CurrentRowIndex, sObjType, sObjName, iSysStat, iSysStat2) Then
+                        oSybase = New clsSybaseObjectInfo(sObjType, sObjName, iSysStat, iSysStat2)
+                        sw.Write(GenScript(oSybase))
+                        sw.Write(fcTxtScript.Text)
+                    End If
+                End If
+                sw.Close()
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
 End Class
