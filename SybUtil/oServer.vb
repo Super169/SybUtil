@@ -67,8 +67,8 @@ Public Class oServer
                                   "Port='" & sPort & "';" & _
                                   "UID='" & sUserName & "';" & _
                                   "PWD='" & sPassword & "';" & _
-                                  "Database='" & sDatabase & "';" & _
-                                  "CharSet='" & sCharSet & "'"
+                                  "Database='" & sDatabase & "';"
+                    If (sCharSet > "") Then sConnString = sConnString & "CharSet='" & sCharSet & "'"
 
                     _ConnASE = New AseConnection(sConnString)
 

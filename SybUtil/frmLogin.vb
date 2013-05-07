@@ -241,7 +241,7 @@ Public Class frmLogin
         '
         Me.cboCharSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboCharSet.FormattingEnabled = True
-        Me.cboCharSet.Items.AddRange(New Object() {"cp850", "utf8"})
+        Me.cboCharSet.Items.AddRange(New Object() {"", "cp850", "utf8", "iso_1"})
         Me.cboCharSet.Location = New System.Drawing.Point(358, 163)
         Me.cboCharSet.Name = "cboCharSet"
         Me.cboCharSet.Size = New System.Drawing.Size(80, 21)
@@ -337,6 +337,7 @@ Public Class frmLogin
             txtPassword.Text = AESCrypter.AES_Decrypt(encryptPwd)
             cbxSavePassword.Checked = True
         Else
+            txtPassword.Text = ""
             cbxSavePassword.Checked = False
         End If
         If oApplication.GetKey(sSubKey, "Connection Type") = "OLE DB" Then

@@ -1,10 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual Basic Express 2010
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SybUtil", "SybUtil\SybUtil.vbproj", "{C8BAFCF1-5B2E-43EE-92FB-ED9FF8F3118B}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "xUtil", "xUtil\xUtil.vbproj", "{67C68EAD-97DA-463A-A723-11FAF64B3489}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SyUtil2", "SyUtil2\SyUtil2.vbproj", "{D0127C02-3C75-4292-B7CE-9B96A2BC1794}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,16 +34,6 @@ Global
 		{67C68EAD-97DA-463A-A723-11FAF64B3489}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{67C68EAD-97DA-463A-A723-11FAF64B3489}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{67C68EAD-97DA-463A-A723-11FAF64B3489}.Release|x86.ActiveCfg = Release|Any CPU
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Debug|x86.ActiveCfg = Debug|x86
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Debug|x86.Build.0 = Debug|x86
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Release|Any CPU.ActiveCfg = Release|x86
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Release|Mixed Platforms.Build.0 = Release|x86
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Release|x86.ActiveCfg = Release|x86
-		{D0127C02-3C75-4292-B7CE-9B96A2BC1794}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

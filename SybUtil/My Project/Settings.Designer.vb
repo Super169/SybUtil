@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("alpha")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("alpha 0.0.5")>  _
         Public ReadOnly Property Version() As String
             Get
                 Return CType(Me("Version"),String)
