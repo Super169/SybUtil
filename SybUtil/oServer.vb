@@ -168,10 +168,38 @@ Public Class oServer
                 End Select
 
             Catch ex As Exception
-                MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Error in ExecuteToDataset")
+                MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Error in ExecuteToString")
             End Try
         End If
         Return ""
+
+    End Function
+
+    Shared Function ExecuteNonQuery(ByVal sSQL As String) As Integer
+        Dim iReturn As Integer = 0
+        If sSQL > "" Then
+            Try
+                Select Case _ConnType
+                    Case ConnectionType.NetPorvider
+                        Dim cmd As Sybase.Data.AseClient.AseCommand
+                        cmd = New AseCommand(sSQL, _ConnASE)
+                        iReturn = cmd.ExecuteNonQuery()
+                        cmd.Dispose()
+                        Return iReturn
+                    Case ConnectionType.OLEDB
+                        Dim cmd As OleDb.OleDbCommand
+                        cmd = New OleDbCommand(sSQL, _ConnOLEDB)
+                        iReturn = cmd.ExecuteNonQuery()
+                        cmd.Dispose()
+                        Return iReturn
+                End Select
+
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Error in ExecuteNonQuery")
+                Return -2
+            End Try
+        End If
+        Return 0
 
     End Function
 

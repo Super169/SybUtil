@@ -1,3 +1,8 @@
+v0.8.3
+- Bug fix: reload the server list after reading from INI file
+- New option to set rowcount and noexec
+- Fix the problem for using English excel in Chinese windows (refer to http://support.microsoft.com/kb/320369)
+
 v0.8.2
 - Modification for CMS workstation
   - Change to .Net Framework 3.5

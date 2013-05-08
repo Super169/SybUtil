@@ -307,7 +307,6 @@ Public Class frmLogin
 #End Region
 
     Private Sub frmLogin_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim idx As Int16
         Me.Text = oApplication.FullName
         oApplication.SetKey("", "Version", "aplha")
         If oApplication.GetKey("", "First Execute") = "" Then oApplication.SetKey("", "First Execute", Now().ToString)
@@ -315,16 +314,23 @@ Public Class frmLogin
 
         oServer.Disconnect()
 
+        LoadServerList()
+
+    End Sub
+
+    Private Sub LoadServerList()
         Dim sConnection() As String
+        Dim idx As Integer
+
         sConnection = oApplication.GetSubKeyNames("Connections")
 
+        cmbServer.Items.Clear()
         For idx = 0 To sConnection.Length - 1
             cmbServer.Items.Add(sConnection(idx))
         Next
         GetProfile("Default", True)
 
     End Sub
-
 
     Private Sub GetProfile(ByVal sSubKey As String, ByVal bUpdateServer As Boolean)
         If bUpdateServer Then cmbServer.Text = oApplication.GetKey(sSubKey, "Server Name").ToUpper
@@ -459,7 +465,8 @@ Public Class frmLogin
             If (ofd.ShowDialog() = DialogResult.OK) Then
                 sFileName = ofd.FileName
                 Me.ReadINI(sFileName)
-                GetProfile("Default", True)
+                LoadServerList()
+                ' GetProfile("Default", True)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

@@ -46,6 +46,10 @@ Public Class frmSQLExecute
     Friend WithEvents ofd As System.Windows.Forms.OpenFileDialog
     Friend WithEvents sfd As System.Windows.Forms.SaveFileDialog
     Friend WithEvents cbxOpenExcel As System.Windows.Forms.CheckBox
+    Friend WithEvents txtRowCount As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents cbxShowPlan As System.Windows.Forms.CheckBox
+    Friend WithEvents cbxNoExecute As System.Windows.Forms.CheckBox
     Friend WithEvents cbxShowDatagrid As System.Windows.Forms.CheckBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSQLExecute))
@@ -59,6 +63,10 @@ Public Class frmSQLExecute
         Me.txtResult = New System.Windows.Forms.TextBox()
         Me.PabBottom = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.cbxShowPlan = New System.Windows.Forms.CheckBox()
+        Me.cbxNoExecute = New System.Windows.Forms.CheckBox()
+        Me.txtRowCount = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.cbxOpenExcel = New System.Windows.Forms.CheckBox()
         Me.btnSavePage = New System.Windows.Forms.Button()
         Me.btnSaveExcel = New System.Windows.Forms.Button()
@@ -108,7 +116,7 @@ Public Class frmSQLExecute
         '
         Me.cbxShowDatagrid.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbxShowDatagrid.ForeColor = System.Drawing.Color.Navy
-        Me.cbxShowDatagrid.Location = New System.Drawing.Point(3, 6)
+        Me.cbxShowDatagrid.Location = New System.Drawing.Point(6, 39)
         Me.cbxShowDatagrid.Name = "cbxShowDatagrid"
         Me.cbxShowDatagrid.Size = New System.Drawing.Size(200, 18)
         Me.cbxShowDatagrid.TabIndex = 12
@@ -116,13 +124,14 @@ Public Class frmSQLExecute
         '
         'btnExecute
         '
-        Me.btnExecute.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnExecute.BackColor = System.Drawing.SystemColors.Control
         Me.btnExecute.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExecute.Location = New System.Drawing.Point(200, 1)
+        Me.btnExecute.Location = New System.Drawing.Point(200, 32)
         Me.btnExecute.Name = "btnExecute"
         Me.btnExecute.Size = New System.Drawing.Size(118, 28)
         Me.btnExecute.TabIndex = 4
         Me.btnExecute.Text = "&Execute"
+        Me.btnExecute.UseVisualStyleBackColor = False
         '
         'SpForm
         '
@@ -139,10 +148,10 @@ Public Class frmSQLExecute
         Me.tcResult.Controls.Add(Me.TPOutput)
         Me.tcResult.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tcResult.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tcResult.Location = New System.Drawing.Point(0, 31)
+        Me.tcResult.Location = New System.Drawing.Point(0, 67)
         Me.tcResult.Name = "tcResult"
         Me.tcResult.SelectedIndex = 0
-        Me.tcResult.Size = New System.Drawing.Size(1064, 267)
+        Me.tcResult.Size = New System.Drawing.Size(1064, 231)
         Me.tcResult.TabIndex = 11
         Me.tcResult.Tag = ""
         '
@@ -151,7 +160,7 @@ Public Class frmSQLExecute
         Me.TPOutput.Controls.Add(Me.txtResult)
         Me.TPOutput.Location = New System.Drawing.Point(4, 25)
         Me.TPOutput.Name = "TPOutput"
-        Me.TPOutput.Size = New System.Drawing.Size(1056, 238)
+        Me.TPOutput.Size = New System.Drawing.Size(1056, 202)
         Me.TPOutput.TabIndex = 0
         Me.TPOutput.Text = "Output"
         '
@@ -166,7 +175,7 @@ Public Class frmSQLExecute
         Me.txtResult.Multiline = True
         Me.txtResult.Name = "txtResult"
         Me.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtResult.Size = New System.Drawing.Size(1056, 238)
+        Me.txtResult.Size = New System.Drawing.Size(1056, 202)
         Me.txtResult.TabIndex = 0
         Me.txtResult.WordWrap = False
         '
@@ -182,6 +191,11 @@ Public Class frmSQLExecute
         '
         'Panel2
         '
+        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.Panel2.Controls.Add(Me.cbxShowPlan)
+        Me.Panel2.Controls.Add(Me.cbxNoExecute)
+        Me.Panel2.Controls.Add(Me.txtRowCount)
+        Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.cbxOpenExcel)
         Me.Panel2.Controls.Add(Me.btnSavePage)
         Me.Panel2.Controls.Add(Me.btnSaveExcel)
@@ -190,17 +204,57 @@ Public Class frmSQLExecute
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1064, 31)
+        Me.Panel2.Size = New System.Drawing.Size(1064, 67)
         Me.Panel2.TabIndex = 0
+        '
+        'cbxShowPlan
+        '
+        Me.cbxShowPlan.AutoSize = True
+        Me.cbxShowPlan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbxShowPlan.Location = New System.Drawing.Point(381, 40)
+        Me.cbxShowPlan.Name = "cbxShowPlan"
+        Me.cbxShowPlan.Size = New System.Drawing.Size(99, 20)
+        Me.cbxShowPlan.TabIndex = 19
+        Me.cbxShowPlan.Text = "Show Plan"
+        Me.cbxShowPlan.UseVisualStyleBackColor = True
+        Me.cbxShowPlan.Visible = False
+        '
+        'cbxNoExecute
+        '
+        Me.cbxNoExecute.AutoSize = True
+        Me.cbxNoExecute.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbxNoExecute.Location = New System.Drawing.Point(200, 11)
+        Me.cbxNoExecute.Name = "cbxNoExecute"
+        Me.cbxNoExecute.Size = New System.Drawing.Size(106, 20)
+        Me.cbxNoExecute.TabIndex = 18
+        Me.cbxNoExecute.Text = "No Execute"
+        Me.cbxNoExecute.UseVisualStyleBackColor = True
+        '
+        'txtRowCount
+        '
+        Me.txtRowCount.Location = New System.Drawing.Point(87, 11)
+        Me.txtRowCount.MaxLength = 5
+        Me.txtRowCount.Name = "txtRowCount"
+        Me.txtRowCount.Size = New System.Drawing.Size(54, 20)
+        Me.txtRowCount.TabIndex = 17
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(3, 12)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(84, 19)
+        Me.Label1.TabIndex = 16
+        Me.Label1.Text = "Rowcount"
         '
         'cbxOpenExcel
         '
-        Me.cbxOpenExcel.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.cbxOpenExcel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbxOpenExcel.AutoSize = True
         Me.cbxOpenExcel.Checked = True
         Me.cbxOpenExcel.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbxOpenExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbxOpenExcel.Location = New System.Drawing.Point(637, 7)
+        Me.cbxOpenExcel.Location = New System.Drawing.Point(633, 38)
         Me.cbxOpenExcel.Name = "cbxOpenExcel"
         Me.cbxOpenExcel.Size = New System.Drawing.Size(179, 20)
         Me.cbxOpenExcel.TabIndex = 15
@@ -209,27 +263,29 @@ Public Class frmSQLExecute
         '
         'btnSavePage
         '
-        Me.btnSavePage.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.btnSavePage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSavePage.BackColor = System.Drawing.SystemColors.Control
         Me.btnSavePage.Enabled = False
         Me.btnSavePage.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSavePage.Location = New System.Drawing.Point(822, 2)
+        Me.btnSavePage.Location = New System.Drawing.Point(818, 32)
         Me.btnSavePage.Name = "btnSavePage"
-        Me.btnSavePage.Size = New System.Drawing.Size(118, 27)
+        Me.btnSavePage.Size = New System.Drawing.Size(118, 28)
         Me.btnSavePage.TabIndex = 14
         Me.btnSavePage.Text = "Save This &Page"
-        Me.btnSavePage.UseVisualStyleBackColor = True
+        Me.btnSavePage.UseVisualStyleBackColor = False
         '
         'btnSaveExcel
         '
-        Me.btnSaveExcel.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.btnSaveExcel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSaveExcel.BackColor = System.Drawing.SystemColors.Control
         Me.btnSaveExcel.Enabled = False
         Me.btnSaveExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSaveExcel.Location = New System.Drawing.Point(943, 2)
+        Me.btnSaveExcel.Location = New System.Drawing.Point(943, 32)
         Me.btnSaveExcel.Name = "btnSaveExcel"
-        Me.btnSaveExcel.Size = New System.Drawing.Size(118, 27)
+        Me.btnSaveExcel.Size = New System.Drawing.Size(118, 28)
         Me.btnSaveExcel.TabIndex = 13
         Me.btnSaveExcel.Text = "&Save All Results"
-        Me.btnSaveExcel.UseVisualStyleBackColor = True
+        Me.btnSaveExcel.UseVisualStyleBackColor = False
         '
         'ofd
         '
@@ -264,7 +320,7 @@ Public Class frmSQLExecute
     Dim _TPage() As Windows.Forms.TabPage
     Dim _dgOutput() As Windows.Forms.DataGrid
     Dim _dtResult() As System.Data.DataTable
-
+    'Dim _OptionChanged As Boolean = False
 
     Private Sub btnExecute_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExecute.Click
 
@@ -273,6 +329,8 @@ Public Class frmSQLExecute
 
         Parent.Cursor = Cursors.WaitCursor
         Try
+
+            oServer.ExecuteNonQuery("SET NOEXEC OFF")
             txtResult.Text = Now().ToString & ": " & oServer.ExecuteToString("SELECT @@version") & Chr(13) & Chr(10) & Chr(13) & Chr(10)
 
             Do While RemoveTPage()
@@ -300,62 +358,97 @@ Public Class frmSQLExecute
 
             If sSQL > "" Then
 
+                'If _OptionChanged Then
+
+                ' Make sure the option script will be executed 
+                Dim optionSQL As String
+                oServer.ExecuteNonQuery("SET NOEXEC OFF")
+
+                If txtRowCount.Text > "" Then
+                    optionSQL = "SET ROWCOUNT " & txtRowCount.Text
+                Else
+                    optionSQL = "SET ROWCOUNT 0"
+                End If
+                oServer.ExecuteNonQuery(optionSQL)
+
+                If cbxShowPlan.Checked Then
+                    optionSQL = "SET SHOWPLAN ON"
+                Else
+                    optionSQL = "SET SHOWPLAN OFF"
+                End If
+                oServer.ExecuteNonQuery(optionSQL)
+
+                If cbxNoExecute.Checked Then
+                    optionSQL = "SET NOEXEC ON"
+                Else
+                    optionSQL = "SET NOEXEC OFF"
+                End If
+                oServer.ExecuteNonQuery(optionSQL)
+
+                '    _OptionChanged = False
+                'End If
+
                 Dim tempSQL As String = sSQL
                 Dim execSQL As String
                 Do While tempSQL > ""
                     execSQL = getSQL(tempSQL)
 
-                    dsSQL = New DataSet
+                    If cbxShowPlan.Checked Then
+                        Dim outSQL As String = oServer.ExecuteToString(execSQL)
+                        txtResult.Text &= outSQL & Chr(13) & Chr(10) & Chr(13) & Chr(10)
+                    Else
 
-                    If oServer.ExecuteToDataset(execSQL, dsSQL) Then
+                        dsSQL = New DataSet
 
-                        Dim i, j, k, Idx As Integer
-                        Dim strL1, strL2, strL3 As String
-                        Dim sOutput As String
+                        If oServer.ExecuteToDataset(execSQL, dsSQL) Then
 
-                        For i = 1 To dsSQL.Tables.Count
-                            sOutput = ""
-                            strL1 = ""
-                            strL2 = ""
-                            strL3 = ""
+                            Dim i, j, k, Idx As Integer
+                            Dim strL1, strL2, strL3 As String
+                            Dim sOutput As String
 
-                            For k = 1 To dsSQL.Tables(i - 1).Columns.Count
-
-                                strL1 &= dsSQL.Tables(i - 1).Columns(k - 1).ColumnName + vbTab
-                                strL2 &= Replace(Space(Len(dsSQL.Tables(i - 1).Columns(k - 1).ColumnName)), " ", "-") + vbTab
-
-                                '                            strL3 &= dsSQL.Tables(i - 1).Columns(k - 1).DataType.ToString + vbTab
-
-
-                            Next
-                            sOutput = strL1 & Chr(13) & Chr(10) & strL2 & Chr(13) & Chr(10)
-
-                            '                        sOutput &= strL3 & Chr(13) & Chr(10)
-
-                            For j = 1 To dsSQL.Tables(i - 1).Rows.Count
+                            For i = 1 To dsSQL.Tables.Count
+                                sOutput = ""
                                 strL1 = ""
+                                strL2 = ""
+                                strL3 = ""
+
                                 For k = 1 To dsSQL.Tables(i - 1).Columns.Count
-                                    strL1 &= dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1).ToString() & vbTab
+
+                                    strL1 &= dsSQL.Tables(i - 1).Columns(k - 1).ColumnName + vbTab
+                                    strL2 &= Replace(Space(Len(dsSQL.Tables(i - 1).Columns(k - 1).ColumnName)), " ", "-") + vbTab
+
+                                    '                            strL3 &= dsSQL.Tables(i - 1).Columns(k - 1).DataType.ToString + vbTab
+
+
                                 Next
-                                sOutput &= strL1 & Chr(13) & Chr(10)
+                                sOutput = strL1 & Chr(13) & Chr(10) & strL2 & Chr(13) & Chr(10)
+
+                                '                        sOutput &= strL3 & Chr(13) & Chr(10)
+
+                                For j = 1 To dsSQL.Tables(i - 1).Rows.Count
+                                    strL1 = ""
+                                    For k = 1 To dsSQL.Tables(i - 1).Columns.Count
+                                        strL1 &= dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1).ToString() & vbTab
+                                    Next
+                                    sOutput &= strL1 & Chr(13) & Chr(10)
+                                Next
+
+                                txtResult.Text &= sOutput & Chr(13) & Chr(10) & Chr(13) & Chr(10)
+
+                                If cbxShowDatagrid.Checked Then
+                                    Idx = AddTPage()
+                                    Me.SetDefaultDataGridDisplay(_dgOutput(Idx), dsSQL, i - 1)
+                                End If
+
+                                SaveDT(dsSQL, i - 1)
+
                             Next
 
-                            txtResult.Text &= sOutput & Chr(13) & Chr(10) & Chr(13) & Chr(10)
-
-                            If cbxShowDatagrid.Checked Then
-                                Idx = AddTPage()
-                                Me.SetDefaultDataGridDisplay(_dgOutput(Idx), dsSQL, i - 1)
-                            End If
-
-                            SaveDT(dsSQL, i - 1)
-
-                        Next
-
+                        End If
                     End If
 
-
                 Loop
-                btnSaveExcel.Enabled = (_dtResult IsNot Nothing)
+                btnSaveExcel.Enabled = (_dtResult IsNot Nothing) And Not (cbxNoExecute.Checked Or cbxShowPlan.Checked)
 
             End If
 
@@ -534,7 +627,14 @@ Public Class frmSQLExecute
         Dim wBook As Microsoft.Office.Interop.Excel.Workbook
         Dim wSheet As Microsoft.Office.Interop.Excel.Worksheet
 
+        ' Fix the problem for .Net 3.5 , can be remove if .Net 4.0 is used
+        ' Reference: http://support.microsoft.com/kb/320369 (problem in using english Excel in Chinese Windows)
+
+        Dim oldCI As System.Globalization.CultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture
+        System.Threading.Thread.CurrentThread.CurrentCulture = New System.Globalization.CultureInfo("en-US")
+
         wBook = excel.Workbooks.Add()
+
         If wBook.Sheets.Count > 1 Then
             While wBook.Sheets.Count > 1
                 excel.Worksheets(1).delete()
@@ -604,6 +704,9 @@ Public Class frmSQLExecute
             excel.Visible = True
         End If
 
+        System.Threading.Thread.CurrentThread.CurrentCulture = oldCI
+
+
     End Sub
 
 
@@ -615,7 +718,21 @@ Public Class frmSQLExecute
         Return ""
     End Function
 
-    Private Sub CheckBox1_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles cbxOpenExcel.CheckedChanged
 
+    'Private Sub cbxOption_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles cbxShowPlan.CheckedChanged, cbxNoExecute.CheckedChanged
+    '    _OptionChanged = True
+    'End Sub
+
+    Private Sub txtRowCount_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtRowCount.KeyPress
+        If Asc(e.KeyChar) <> 8 Then
+            If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
+                e.Handled = True
+            End If
+        End If
     End Sub
+
+    'Private Sub txtRowCount_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtRowCount.TextChanged
+    '    _OptionChanged = True
+    'End Sub
+
 End Class
