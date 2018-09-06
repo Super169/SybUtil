@@ -1,6 +1,7 @@
 Module modMain
 
     Sub main()
+        MyApp.Init()
         oApplication.StartApplication()
         Dim _wLogin As frmLogin
         Do

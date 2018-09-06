@@ -31,7 +31,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <PublishUrl>http://localhost/SybUtil/</PublishUrl>
     <Install>true</Install>
@@ -89,9 +89,6 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FastColoredTextBox">
-      <HintPath>..\DLL\FastColoredTextBox.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -115,6 +112,10 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
+    <ProjectReference Include="..\FastColoredTextBox\FastColoredTextBox.csproj">
+      <Project>{6dd14a85-ccfc-4774-bd26-0f5772512319}</Project>
+      <Name>FastColoredTextBox</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xUtil\xUtil.vbproj">
       <Name>xUtil</Name>
       <Project>{67C68EAD-97DA-463A-A723-11FAF64B3489}</Project>
@@ -125,6 +126,7 @@
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
     <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
     <Import Include="System.Data" />
     <Import Include="System.Diagnostics" />
     <Import Include="System.Drawing" />
@@ -165,6 +167,12 @@
     <Compile Include="frmTest.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmUpdateProfile.designer.vb">
+      <DependentUpon>frmUpdateProfile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateProfile.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modMain.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -173,6 +181,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="MyApp.vb" />
     <Compile Include="oApplication.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -213,6 +222,9 @@
       <DependentUpon>frmTest.vb</DependentUpon>
     </EmbeddedResource>
     <Content Include="SybUtil.Net.ico" />
+    <EmbeddedResource Include="frmUpdateProfile.resx">
+      <DependentUpon>frmUpdateProfile.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />

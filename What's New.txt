@@ -1,8 +1,18 @@
+v0.8.5.32415
+- Buf fix: Handle null value for date field in formatter (introduced in v0.8.3.18269)
 
-v0.8.4
+v0.8.5.28536
+- Add connection profile
+- Update the utilties (FastColoredTextBox.dll)
+
+v0.8.4.19619
+- Include millisecond in the result of SQLExecte (i.e. set format to " yyyy-MM-dd HH:mm:ss.fff") 
+
+v0.8.4.18269
 - Bug fix: resume connection status after SQL Execution (ie. rowcount, noexec, showplan)
 - Bug fix: formatter for datetime filed should use "HH:mm:ss" instead of "hh:mm:ss" in both SQLExecute and Script Generator.
 - Bug fix: close Excel workbook after creating the Excel file
+- Include millisecond in the result of SQLExecte (i.e. set format to " yyyy-MM-dd HH:mm:ss.fff") 
 
 v0.8.3
 - Bug fix: reload the server list after reading from INI file

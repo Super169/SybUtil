@@ -39,7 +39,6 @@ Public Class frmLogin
     Friend WithEvents txtPort As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtUserName As System.Windows.Forms.TextBox
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -53,6 +52,10 @@ Public Class frmLogin
     Friend WithEvents cboCharSet As System.Windows.Forms.ComboBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents rbOLEDB As System.Windows.Forms.RadioButton
+    Friend WithEvents btnUpdatePorfile As System.Windows.Forms.Button
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents cboEnv As System.Windows.Forms.ComboBox
+    Friend WithEvents cboProfile As System.Windows.Forms.ComboBox
     Friend WithEvents btnReadINI As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
@@ -62,7 +65,6 @@ Public Class frmLogin
         Me.txtPort = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.txtUserName = New System.Windows.Forms.TextBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.rbNet = New System.Windows.Forms.RadioButton()
@@ -76,6 +78,10 @@ Public Class frmLogin
         Me.cboCharSet = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.rbOLEDB = New System.Windows.Forms.RadioButton()
+        Me.btnUpdatePorfile = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.cboEnv = New System.Windows.Forms.ComboBox()
+        Me.cboProfile = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'cmbServer
@@ -83,16 +89,16 @@ Public Class frmLogin
         Me.cmbServer.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbServer.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbServer.Location = New System.Drawing.Point(128, 17)
+        Me.cmbServer.Location = New System.Drawing.Point(128, 45)
         Me.cmbServer.Name = "cmbServer"
         Me.cmbServer.Size = New System.Drawing.Size(224, 24)
-        Me.cmbServer.TabIndex = 0
+        Me.cmbServer.TabIndex = 3
         '
         'lblSrvProfile
         '
         Me.lblSrvProfile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSrvProfile.ForeColor = System.Drawing.Color.Navy
-        Me.lblSrvProfile.Location = New System.Drawing.Point(12, 20)
+        Me.lblSrvProfile.Location = New System.Drawing.Point(12, 48)
         Me.lblSrvProfile.Name = "lblSrvProfile"
         Me.lblSrvProfile.Size = New System.Drawing.Size(96, 20)
         Me.lblSrvProfile.TabIndex = 1
@@ -101,24 +107,24 @@ Public Class frmLogin
         'txtHost
         '
         Me.txtHost.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtHost.Location = New System.Drawing.Point(128, 47)
+        Me.txtHost.Location = New System.Drawing.Point(128, 75)
         Me.txtHost.Name = "txtHost"
         Me.txtHost.Size = New System.Drawing.Size(224, 22)
-        Me.txtHost.TabIndex = 2
+        Me.txtHost.TabIndex = 4
         '
         'txtPort
         '
         Me.txtPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPort.Location = New System.Drawing.Point(358, 47)
+        Me.txtPort.Location = New System.Drawing.Point(358, 75)
         Me.txtPort.Name = "txtPort"
         Me.txtPort.Size = New System.Drawing.Size(80, 22)
-        Me.txtPort.TabIndex = 3
+        Me.txtPort.TabIndex = 5
         '
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Navy
-        Me.Label1.Location = New System.Drawing.Point(12, 50)
+        Me.Label1.Location = New System.Drawing.Point(12, 78)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(96, 14)
         Me.Label1.TabIndex = 4
@@ -128,59 +134,51 @@ Public Class frmLogin
         '
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Navy
-        Me.Label2.Location = New System.Drawing.Point(12, 106)
+        Me.Label2.Location = New System.Drawing.Point(12, 134)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(96, 14)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "User Name:"
-        '
-        'Label3
-        '
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Navy
-        Me.Label3.Location = New System.Drawing.Point(12, 134)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(96, 14)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Password:"
+        Me.Label2.Text = "Login/Pwd:"
         '
         'txtUserName
         '
         Me.txtUserName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUserName.Location = New System.Drawing.Point(128, 103)
+        Me.txtUserName.Location = New System.Drawing.Point(128, 131)
         Me.txtUserName.Name = "txtUserName"
-        Me.txtUserName.Size = New System.Drawing.Size(310, 22)
-        Me.txtUserName.TabIndex = 8
+        Me.txtUserName.Size = New System.Drawing.Size(153, 22)
+        Me.txtUserName.TabIndex = 7
         '
         'txtPassword
         '
         Me.txtPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPassword.Location = New System.Drawing.Point(128, 131)
+        Me.txtPassword.Location = New System.Drawing.Point(285, 131)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPassword.Size = New System.Drawing.Size(310, 22)
-        Me.txtPassword.TabIndex = 9
+        Me.txtPassword.Size = New System.Drawing.Size(153, 22)
+        Me.txtPassword.TabIndex = 8
         '
         'rbNet
         '
         Me.rbNet.Checked = True
         Me.rbNet.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbNet.Location = New System.Drawing.Point(128, 166)
+        Me.rbNet.Location = New System.Drawing.Point(238, 265)
         Me.rbNet.Name = "rbNet"
         Me.rbNet.Size = New System.Drawing.Size(104, 18)
         Me.rbNet.TabIndex = 11
         Me.rbNet.TabStop = True
         Me.rbNet.Text = ".Net Provider"
+        Me.rbNet.Visible = False
         '
         'Label4
         '
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Navy
-        Me.Label4.Location = New System.Drawing.Point(12, 167)
+        Me.Label4.Location = New System.Drawing.Point(12, 265)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 18)
         Me.Label4.TabIndex = 11
         Me.Label4.Text = "Connection:"
+        Me.Label4.Visible = False
         '
         'btnConnect
         '
@@ -188,7 +186,7 @@ Public Class frmLogin
         Me.btnConnect.Location = New System.Drawing.Point(213, 191)
         Me.btnConnect.Name = "btnConnect"
         Me.btnConnect.Size = New System.Drawing.Size(104, 41)
-        Me.btnConnect.TabIndex = 13
+        Me.btnConnect.TabIndex = 12
         Me.btnConnect.Text = "Connect"
         '
         'btnClose
@@ -197,32 +195,32 @@ Public Class frmLogin
         Me.btnClose.Location = New System.Drawing.Point(334, 190)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(104, 41)
-        Me.btnClose.TabIndex = 14
+        Me.btnClose.TabIndex = 13
         Me.btnClose.Text = "Close"
         '
         'cbxSavePassword
         '
         Me.cbxSavePassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbxSavePassword.ForeColor = System.Drawing.Color.Navy
-        Me.cbxSavePassword.Location = New System.Drawing.Point(15, 200)
+        Me.cbxSavePassword.Location = New System.Drawing.Point(298, 161)
         Me.cbxSavePassword.Name = "cbxSavePassword"
         Me.cbxSavePassword.Size = New System.Drawing.Size(135, 23)
-        Me.cbxSavePassword.TabIndex = 12
+        Me.cbxSavePassword.TabIndex = 10
         Me.cbxSavePassword.Text = "Save Password"
         '
         'txtDatabase
         '
         Me.txtDatabase.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDatabase.Location = New System.Drawing.Point(128, 75)
+        Me.txtDatabase.Location = New System.Drawing.Point(128, 103)
         Me.txtDatabase.Name = "txtDatabase"
         Me.txtDatabase.Size = New System.Drawing.Size(310, 22)
-        Me.txtDatabase.TabIndex = 7
+        Me.txtDatabase.TabIndex = 6
         '
         'lblDatabase
         '
         Me.lblDatabase.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDatabase.ForeColor = System.Drawing.Color.Navy
-        Me.lblDatabase.Location = New System.Drawing.Point(12, 78)
+        Me.lblDatabase.Location = New System.Drawing.Point(12, 106)
         Me.lblDatabase.Name = "lblDatabase"
         Me.lblDatabase.Size = New System.Drawing.Size(96, 14)
         Me.lblDatabase.TabIndex = 16
@@ -231,10 +229,11 @@ Public Class frmLogin
         'btnReadINI
         '
         Me.btnReadINI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnReadINI.Location = New System.Drawing.Point(358, 14)
+        Me.btnReadINI.Location = New System.Drawing.Point(358, 42)
         Me.btnReadINI.Name = "btnReadINI"
         Me.btnReadINI.Size = New System.Drawing.Size(80, 29)
         Me.btnReadINI.TabIndex = 17
+        Me.btnReadINI.TabStop = False
         Me.btnReadINI.Text = "SQL.INI"
         '
         'cboCharSet
@@ -242,16 +241,16 @@ Public Class frmLogin
         Me.cboCharSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboCharSet.FormattingEnabled = True
         Me.cboCharSet.Items.AddRange(New Object() {"", "cp850", "utf8", "iso_1"})
-        Me.cboCharSet.Location = New System.Drawing.Point(358, 163)
+        Me.cboCharSet.Location = New System.Drawing.Point(128, 163)
         Me.cboCharSet.Name = "cboCharSet"
         Me.cboCharSet.Size = New System.Drawing.Size(80, 21)
-        Me.cboCharSet.TabIndex = 18
+        Me.cboCharSet.TabIndex = 9
         '
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Navy
-        Me.Label5.Location = New System.Drawing.Point(273, 164)
+        Me.Label5.Location = New System.Drawing.Point(12, 163)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(79, 18)
         Me.Label5.TabIndex = 19
@@ -261,18 +260,61 @@ Public Class frmLogin
         '
         Me.rbOLEDB.Enabled = False
         Me.rbOLEDB.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbOLEDB.Location = New System.Drawing.Point(12, -1)
+        Me.rbOLEDB.Location = New System.Drawing.Point(128, 265)
         Me.rbOLEDB.Name = "rbOLEDB"
         Me.rbOLEDB.Size = New System.Drawing.Size(80, 18)
         Me.rbOLEDB.TabIndex = 10
         Me.rbOLEDB.Text = "OLE DB"
         Me.rbOLEDB.Visible = False
         '
+        'btnUpdatePorfile
+        '
+        Me.btnUpdatePorfile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdatePorfile.Location = New System.Drawing.Point(15, 191)
+        Me.btnUpdatePorfile.Name = "btnUpdatePorfile"
+        Me.btnUpdatePorfile.Size = New System.Drawing.Size(104, 41)
+        Me.btnUpdatePorfile.TabIndex = 11
+        Me.btnUpdatePorfile.Text = "Update Profile"
+        '
+        'Label3
+        '
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Navy
+        Me.Label3.Location = New System.Drawing.Point(12, 15)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(96, 20)
+        Me.Label3.TabIndex = 21
+        Me.Label3.Text = "Env/Profile:"
+        '
+        'cboEnv
+        '
+        Me.cboEnv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEnv.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboEnv.FormattingEnabled = True
+        Me.cboEnv.Location = New System.Drawing.Point(128, 13)
+        Me.cboEnv.Name = "cboEnv"
+        Me.cboEnv.Size = New System.Drawing.Size(117, 24)
+        Me.cboEnv.TabIndex = 1
+        '
+        'cboProfile
+        '
+        Me.cboProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboProfile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboProfile.FormattingEnabled = True
+        Me.cboProfile.Location = New System.Drawing.Point(256, 13)
+        Me.cboProfile.Name = "cboProfile"
+        Me.cboProfile.Size = New System.Drawing.Size(182, 24)
+        Me.cboProfile.TabIndex = 2
+        '
         'frmLogin
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(445, 243)
+        Me.ClientSize = New System.Drawing.Size(445, 237)
         Me.ControlBox = False
+        Me.Controls.Add(Me.cboProfile)
+        Me.Controls.Add(Me.cboEnv)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.btnUpdatePorfile)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.cboCharSet)
         Me.Controls.Add(Me.btnReadINI)
@@ -286,7 +328,6 @@ Public Class frmLogin
         Me.Controls.Add(Me.rbOLEDB)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.txtUserName)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtPort)
@@ -306,6 +347,8 @@ Public Class frmLogin
 
 #End Region
 
+    Dim IndexChangeEnabled As Boolean = True
+
     Private Sub frmLogin_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Text = oApplication.FullName
         oApplication.SetKey("", "Version", "aplha")
@@ -314,9 +357,46 @@ Public Class frmLogin
 
         oServer.Disconnect()
 
+        Me.Initialization()
         LoadServerList()
 
     End Sub
+
+    Private Sub Initialization()
+        Dim idx As Integer
+        Me.cboEnv.Items.Clear()
+        For idx = 0 To MyApp.envList.Count - 1
+            Me.cboEnv.Items.Add(MyApp.envList.Item(idx))
+        Next
+        My.Settings.Save()
+        readProfile()
+    End Sub
+
+    Private Sub readProfile()
+
+        Dim profileDic As New Dictionary(Of Integer, String)
+        Dim idx As Integer
+
+        Dim env As String = cboEnv.Text.Trim
+        profileDic.Add(-1, "")
+        For idx = 0 To MyApp.profileCnt - 1
+            If (env = "") Or (env.Equals(MyApp.profileList(idx)(MyApp.ePL.env))) Then
+                profileDic.Add(idx, MyApp.profileList(idx)(MyApp.ePL.profile))
+            End If
+        Next
+        Me.cboProfile.DataSource = New BindingSource(profileDic, Nothing)
+        Me.cboProfile.DisplayMember = "Value"
+        Me.cboProfile.ValueMember = "Key"
+        If (My.Settings.LastProfile > "") Then cboProfile.Text = My.Settings.LastProfile
+    End Sub
+
+    Private Sub cboEnv_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboEnv.SelectedIndexChanged
+        'IndexChangeEnabled = False
+        readProfile()
+        'IndexChangeEnabled = True
+    End Sub
+
+
 
     Private Sub LoadServerList()
         Dim sConnection() As String
@@ -402,8 +482,12 @@ Public Class frmLogin
         Try
             If oServer.Connect(cmbServer.Text, connType, txtHost.Text, txtPort.Text, txtUserName.Text, txtPassword.Text, txtDatabase.Text, cboCharSet.Text) Then
                 'If cbxSavePassword.Checked Then
-                Me.SaveProfile("Connections\\" & cmbServer.Text)
-                Me.SaveProfile("Default")
+                My.Settings.LastProfile = Me.cboProfile.Text.Trim
+                My.Settings.Save()
+                If (Me.cboProfile.Text.Trim.Equals("")) Then
+                    Me.SaveProfile("Connections\\" & cmbServer.Text)
+                    Me.SaveProfile("Default")
+                End If
                 'End If
                 Me.Close()
                 Return False
@@ -528,4 +612,27 @@ Public Class frmLogin
         End Try
     End Sub
 
+    Private Sub btnUpdatePorfile_Click(sender As Object, e As EventArgs) Handles btnUpdatePorfile.Click
+        frmUpdateProfile.ShowDialog()
+        Me.Initialization()
+    End Sub
+
+    Private Sub cboProfile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboProfile.SelectedIndexChanged
+        If Not IndexChangeEnabled Then Return
+        Dim idx As Integer = DirectCast(cboProfile.SelectedItem, KeyValuePair(Of Integer, String)).Key
+        Me.cmbServer.Enabled = (idx < 0)
+        Me.txtDatabase.Enabled = (idx < 0)
+        Me.txtHost.Enabled = (idx < 0)
+        Me.txtPort.Enabled = (idx < 0)
+        Me.cboCharSet.Enabled = (idx < 0)
+        If (idx >= 0) Then
+            Me.cmbServer.Text = MyApp.profileList(idx)(MyApp.ePL.server)
+            Me.txtDatabase.Text = MyApp.profileList(idx)(MyApp.ePL.db)
+            Me.txtHost.Text = MyApp.profileList(idx)(MyApp.ePL.host)
+            Me.txtPort.Text = MyApp.profileList(idx)(MyApp.ePL.port)
+            Me.txtUserName.Text = MyApp.profileList(idx)(MyApp.ePL.login)
+            Me.txtPassword.Text = MyApp.profileList(idx)(MyApp.ePL.password)
+            Me.cboCharSet.Text = MyApp.profileList(idx)(MyApp.ePL.charset)
+        End If
+    End Sub
 End Class

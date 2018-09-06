@@ -431,12 +431,16 @@ Public Class frmSQLExecute
                                 For j = 1 To dsSQL.Tables(i - 1).Rows.Count
                                     strL1 = ""
                                     For k = 1 To dsSQL.Tables(i - 1).Columns.Count
-                                        Select Case dsSQL.Tables(i - 1).Columns(k - 1).DataType.ToString.ToLower
-                                            Case "system.datetime"
-                                                strL1 &= CDate(dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1)).ToString("yyyy-MM-dd HH:mm:ss.fff") & vbTab
-                                            Case Else
-                                                strL1 &= dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1).ToString() & vbTab
-                                        End Select
+                                        If dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1).GetType.Name.ToUpper = "DBNULL" Then
+                                            strL1 &= "(null)" & vbTab
+                                        Else
+                                            Select Case dsSQL.Tables(i - 1).Columns(k - 1).DataType.ToString.ToLower
+                                                Case "system.datetime"
+                                                    strL1 &= CDate(dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1)).ToString("yyyy-MM-dd HH:mm:ss.fff") & vbTab
+                                                Case Else
+                                                    strL1 &= dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1).ToString() & vbTab
+                                            End Select
+                                        End If
                                     Next
                                     sOutput &= strL1 & Chr(13) & Chr(10)
                                 Next
