@@ -52,6 +52,7 @@ Public Class frmSQLExecute
     Friend WithEvents cbxNoExecute As System.Windows.Forms.CheckBox
     Friend WithEvents cbxShowDatagrid As System.Windows.Forms.CheckBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSQLExecute))
         Me.PanTop = New System.Windows.Forms.Panel()
         Me.fcTxtSQL = New FastColoredTextBoxNS.FastColoredTextBox()
@@ -116,7 +117,7 @@ Public Class frmSQLExecute
         '
         Me.cbxShowDatagrid.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbxShowDatagrid.ForeColor = System.Drawing.Color.Navy
-        Me.cbxShowDatagrid.Location = New System.Drawing.Point(6, 39)
+        Me.cbxShowDatagrid.Location = New System.Drawing.Point(283, 12)
         Me.cbxShowDatagrid.Name = "cbxShowDatagrid"
         Me.cbxShowDatagrid.Size = New System.Drawing.Size(200, 18)
         Me.cbxShowDatagrid.TabIndex = 12
@@ -126,7 +127,7 @@ Public Class frmSQLExecute
         '
         Me.btnExecute.BackColor = System.Drawing.SystemColors.Control
         Me.btnExecute.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExecute.Location = New System.Drawing.Point(200, 32)
+        Me.btnExecute.Location = New System.Drawing.Point(489, 7)
         Me.btnExecute.Name = "btnExecute"
         Me.btnExecute.Size = New System.Drawing.Size(118, 28)
         Me.btnExecute.TabIndex = 4
@@ -148,10 +149,10 @@ Public Class frmSQLExecute
         Me.tcResult.Controls.Add(Me.TPOutput)
         Me.tcResult.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tcResult.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tcResult.Location = New System.Drawing.Point(0, 67)
+        Me.tcResult.Location = New System.Drawing.Point(0, 42)
         Me.tcResult.Name = "tcResult"
         Me.tcResult.SelectedIndex = 0
-        Me.tcResult.Size = New System.Drawing.Size(1064, 231)
+        Me.tcResult.Size = New System.Drawing.Size(1064, 256)
         Me.tcResult.TabIndex = 11
         Me.tcResult.Tag = ""
         '
@@ -160,7 +161,7 @@ Public Class frmSQLExecute
         Me.TPOutput.Controls.Add(Me.txtResult)
         Me.TPOutput.Location = New System.Drawing.Point(4, 25)
         Me.TPOutput.Name = "TPOutput"
-        Me.TPOutput.Size = New System.Drawing.Size(1056, 202)
+        Me.TPOutput.Size = New System.Drawing.Size(1056, 227)
         Me.TPOutput.TabIndex = 0
         Me.TPOutput.Text = "Output"
         '
@@ -175,7 +176,7 @@ Public Class frmSQLExecute
         Me.txtResult.Multiline = True
         Me.txtResult.Name = "txtResult"
         Me.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtResult.Size = New System.Drawing.Size(1056, 202)
+        Me.txtResult.Size = New System.Drawing.Size(1056, 227)
         Me.txtResult.TabIndex = 0
         Me.txtResult.WordWrap = False
         '
@@ -204,14 +205,15 @@ Public Class frmSQLExecute
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1064, 67)
+        Me.Panel2.Size = New System.Drawing.Size(1064, 42)
         Me.Panel2.TabIndex = 0
         '
         'cbxShowPlan
         '
         Me.cbxShowPlan.AutoSize = True
+        Me.cbxShowPlan.Enabled = False
         Me.cbxShowPlan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbxShowPlan.Location = New System.Drawing.Point(381, 40)
+        Me.cbxShowPlan.Location = New System.Drawing.Point(134, 37)
         Me.cbxShowPlan.Name = "cbxShowPlan"
         Me.cbxShowPlan.Size = New System.Drawing.Size(99, 20)
         Me.cbxShowPlan.TabIndex = 19
@@ -223,7 +225,7 @@ Public Class frmSQLExecute
         '
         Me.cbxNoExecute.AutoSize = True
         Me.cbxNoExecute.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbxNoExecute.Location = New System.Drawing.Point(200, 11)
+        Me.cbxNoExecute.Location = New System.Drawing.Point(161, 11)
         Me.cbxNoExecute.Name = "cbxNoExecute"
         Me.cbxNoExecute.Size = New System.Drawing.Size(106, 20)
         Me.cbxNoExecute.TabIndex = 18
@@ -254,7 +256,7 @@ Public Class frmSQLExecute
         Me.cbxOpenExcel.Checked = True
         Me.cbxOpenExcel.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbxOpenExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbxOpenExcel.Location = New System.Drawing.Point(633, 38)
+        Me.cbxOpenExcel.Location = New System.Drawing.Point(633, 11)
         Me.cbxOpenExcel.Name = "cbxOpenExcel"
         Me.cbxOpenExcel.Size = New System.Drawing.Size(179, 20)
         Me.cbxOpenExcel.TabIndex = 15
@@ -267,7 +269,7 @@ Public Class frmSQLExecute
         Me.btnSavePage.BackColor = System.Drawing.SystemColors.Control
         Me.btnSavePage.Enabled = False
         Me.btnSavePage.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSavePage.Location = New System.Drawing.Point(818, 32)
+        Me.btnSavePage.Location = New System.Drawing.Point(818, 7)
         Me.btnSavePage.Name = "btnSavePage"
         Me.btnSavePage.Size = New System.Drawing.Size(118, 28)
         Me.btnSavePage.TabIndex = 14
@@ -280,7 +282,7 @@ Public Class frmSQLExecute
         Me.btnSaveExcel.BackColor = System.Drawing.SystemColors.Control
         Me.btnSaveExcel.Enabled = False
         Me.btnSaveExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSaveExcel.Location = New System.Drawing.Point(943, 32)
+        Me.btnSaveExcel.Location = New System.Drawing.Point(943, 7)
         Me.btnSaveExcel.Name = "btnSaveExcel"
         Me.btnSaveExcel.Size = New System.Drawing.Size(118, 28)
         Me.btnSaveExcel.TabIndex = 13
@@ -299,6 +301,7 @@ Public Class frmSQLExecute
         Me.Controls.Add(Me.SpForm)
         Me.Controls.Add(Me.PanTop)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MinimumSize = New System.Drawing.Size(800, 0)
         Me.Name = "frmSQLExecute"
         Me.Text = "Interactive SQL"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -428,7 +431,12 @@ Public Class frmSQLExecute
                                 For j = 1 To dsSQL.Tables(i - 1).Rows.Count
                                     strL1 = ""
                                     For k = 1 To dsSQL.Tables(i - 1).Columns.Count
-                                        strL1 &= dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1).ToString() & vbTab
+                                        Select Case dsSQL.Tables(i - 1).Columns(k - 1).DataType.ToString.ToLower
+                                            Case "system.datetime"
+                                                strL1 &= CDate(dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1)).ToString("yyyy-MM-dd HH:mm:ss.fff") & vbTab
+                                            Case Else
+                                                strL1 &= dsSQL.Tables(i - 1).Rows(j - 1).Item(k - 1).ToString() & vbTab
+                                        End Select
                                     Next
                                     sOutput &= strL1 & Chr(13) & Chr(10)
                                 Next
@@ -448,6 +456,12 @@ Public Class frmSQLExecute
                     End If
 
                 Loop
+
+                ' Resume all setting after execution
+                oServer.ExecuteNonQuery("SET NOEXEC OFF")
+                oServer.ExecuteNonQuery("SET SHOWPLAN OFF")
+                oServer.ExecuteNonQuery("SET ROWCOUNT 0")
+
                 btnSaveExcel.Enabled = (_dtResult IsNot Nothing) And Not (cbxNoExecute.Checked Or cbxShowPlan.Checked)
 
             End If
@@ -529,8 +543,8 @@ Public Class frmSQLExecute
             dgTBC.HeaderText = dsData.Tables(iTableIdx).Columns(k - 1).ColumnName
             Select Case dsData.Tables(iTableIdx).Columns(k - 1).DataType.ToString.ToLower
                 Case "system.datetime"
-                    dgTBC.Format = "yyyy-MM-dd hh:mm:ss"
-                    dgTBC.Width = 140
+                    dgTBC.Format = "yyyy-MM-dd HH:mm:ss.fff"
+                    dgTBC.Width = 160
                     dgTBC.Alignment = HorizontalAlignment.Right
                 Case "system.int", "system.int16", "system.int32", "system.int64"
                     dgTBC.Width = 50
@@ -698,6 +712,7 @@ Public Class frmSQLExecute
         End If
 
         wBook.SaveAs(fname)
+        wBook.Close()
 
         If cbxOpenExcel.Checked Then
             excel.Workbooks.Open(fname)

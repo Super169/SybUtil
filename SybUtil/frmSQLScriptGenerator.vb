@@ -69,6 +69,7 @@ Public Class frmSQLScriptGenerator
     Friend WithEvents btnSaveScripts As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim XDataWindowSettings1 As xUtil.xDataWindowSettings = New xUtil.xDataWindowSettings()
         Dim XDataWindowSettings2 As xUtil.xDataWindowSettings = New xUtil.xDataWindowSettings()
         Dim XDataWindowSettings3 As xUtil.xDataWindowSettings = New xUtil.xDataWindowSettings()
@@ -132,25 +133,25 @@ Public Class frmSQLScriptGenerator
         'btnRefreshList
         '
         Me.btnRefreshList.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRefreshList.Location = New System.Drawing.Point(296, 7)
+        Me.btnRefreshList.Location = New System.Drawing.Point(16, 32)
         Me.btnRefreshList.Name = "btnRefreshList"
         Me.btnRefreshList.Size = New System.Drawing.Size(72, 22)
-        Me.btnRefreshList.TabIndex = 1
+        Me.btnRefreshList.TabIndex = 2
         Me.btnRefreshList.Text = "Refresh"
         '
         'btnShowScript
         '
         Me.btnShowScript.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnShowScript.Location = New System.Drawing.Point(368, 7)
+        Me.btnShowScript.Location = New System.Drawing.Point(364, 32)
         Me.btnShowScript.Name = "btnShowScript"
         Me.btnShowScript.Size = New System.Drawing.Size(80, 22)
-        Me.btnShowScript.TabIndex = 3
+        Me.btnShowScript.TabIndex = 5
         Me.btnShowScript.Text = "Script >>"
         '
         'tcSybase
         '
         Me.tcSybase.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.tcSybase.Controls.Add(Me.tpALL)
         Me.tcSybase.Controls.Add(Me.tpUserTable)
         Me.tcSybase.Controls.Add(Me.tpProcedure)
@@ -162,7 +163,7 @@ Public Class frmSQLScriptGenerator
         Me.tcSybase.Name = "tcSybase"
         Me.tcSybase.SelectedIndex = 0
         Me.tcSybase.Size = New System.Drawing.Size(440, 544)
-        Me.tcSybase.TabIndex = 4
+        Me.tcSybase.TabIndex = 6
         '
         'tpALL
         '
@@ -605,7 +606,7 @@ Public Class frmSQLScriptGenerator
         'lblScriptInfo
         '
         Me.lblScriptInfo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblScriptInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.lblScriptInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblScriptInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -644,23 +645,23 @@ Public Class frmSQLScriptGenerator
         Me.txtSearchKey.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSearchKey.Location = New System.Drawing.Point(16, 7)
         Me.txtSearchKey.Name = "txtSearchKey"
-        Me.txtSearchKey.Size = New System.Drawing.Size(272, 22)
-        Me.txtSearchKey.TabIndex = 8
+        Me.txtSearchKey.Size = New System.Drawing.Size(428, 22)
+        Me.txtSearchKey.TabIndex = 1
         '
         'btnClear
         '
         Me.btnClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnClear.Location = New System.Drawing.Point(296, 28)
+        Me.btnClear.Location = New System.Drawing.Point(94, 32)
         Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(72, 24)
-        Me.btnClear.TabIndex = 9
+        Me.btnClear.Size = New System.Drawing.Size(72, 22)
+        Me.btnClear.TabIndex = 3
         Me.btnClear.Text = "Clear"
         '
         'fcTxtScript
         '
         Me.fcTxtScript.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.fcTxtScript.AutoScrollMinSize = New System.Drawing.Size(27, 14)
         Me.fcTxtScript.BackBrush = Nothing
         Me.fcTxtScript.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -686,10 +687,10 @@ Public Class frmSQLScriptGenerator
         'btnSaveScripts
         '
         Me.btnSaveScripts.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSaveScripts.Location = New System.Drawing.Point(368, 28)
+        Me.btnSaveScripts.Location = New System.Drawing.Point(278, 32)
         Me.btnSaveScripts.Name = "btnSaveScripts"
-        Me.btnSaveScripts.Size = New System.Drawing.Size(80, 24)
-        Me.btnSaveScripts.TabIndex = 11
+        Me.btnSaveScripts.Size = New System.Drawing.Size(80, 22)
+        Me.btnSaveScripts.TabIndex = 4
         Me.btnSaveScripts.Text = "Save"
         '
         'frmSQLScriptGenerator
@@ -812,7 +813,7 @@ Public Class frmSQLScriptGenerator
             xdwDisplay.AddTextColumn("sysstat2", "", "", HorizontalAlignment.Left, 0)
             xdwDisplay.AddTextColumn("name", "Object Name", "", HorizontalAlignment.Left, 200)
             xdwDisplay.AddTextColumn("x_ObjType", "Type", "", HorizontalAlignment.Left, 60)
-            xdwDisplay.AddTextColumn("crdate", "Creation Date/Time", "yyyy-MM-dd hh:mm:ss", HorizontalAlignment.Left, 130)
+            xdwDisplay.AddTextColumn("crdate", "Creation Date/Time", "yyyy-MM-dd HH:mm:ss", HorizontalAlignment.Left, 130)
             xdwDisplay.CloseTableStyle()
             xdwDisplay.ResetAfterRefresh()
             xdwDisplay.ResumeLayout()
